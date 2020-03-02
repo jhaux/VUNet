@@ -1,0 +1,66 @@
+# The Iterator defined the training and evaluation logic
+iterator: VUNet.iterator.Iterator
+# The model defines, how we want to process our data
+model: VUNet.VUnet
+
+# Mandatory Training Parameters
+batch_size: 8
+num_epochs: 100
+
+# Specify a directory here, that will be copied inside your experiment folder
+# when edflow is run.
+code_root: null
+
+# Parameters defining VUNet
+# Note that there are more descriptive parameters, which can be found in the
+# model definition. These are all derivative of the parameters defined in this
+# file
+model_pars:
+    # Activation after final decoding layer
+    final_act: True
+    # Feature depth after first encoding convolution.
+    # Will be doubled after each stage
+    nf_start: 64
+    # Maximum depth of features during encoding and decoding
+    nf_max: 128
+    # Height and width of the input images. These must always be quadratic
+    spatial_size: 256
+    # Dropout probability
+    dropout_prob: 0.0
+    # Number of channels of the appearance input (3 for RGB, 4 for RGBA)
+    # This defines also the number of output channels.
+    img_channels: 3
+    # Number of channels for the pose input. This implementation uses RGB
+    # stickmen, but it is not uncommon to also use heatmaps with a channel per
+    # keypoint of the pose descriptor.
+    pose_channels: 3
+
+# Learning rate
+lr: 0.0001
+
+# Nicer logging integrations. Weights and Biases is highly recommended (wandb)
+integrations:
+    wandb:
+        active: false
+    tensorboardX:
+        active: false
+
+# Loss weights
+# To find the optimal parameter combination consider doing a sweep using wandb
+# and edflows `edprep` functionality. Take a look at `edprep`'s documentation
+# to learn how this is done.
+losses:
+    color_L1:
+        weight: 0.5
+    color_gradient:
+        weight: 0.
+    color_L2:
+        weight: 0.
+    KL:
+        start_ramp_it: 2000
+        start_ramp_val: 0
+        end_ramp_it: 3500
+        end_ramp_val: 1
+    perceptual:
+        weight: 1.
+        vgg_feat_weights: [1,1,1,1,1,1]

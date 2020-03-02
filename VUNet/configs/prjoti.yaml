@@ -1,0 +1,4 @@
+data_root: /home/jhaux/Downloads/PJ4
+datasets:
+  train: VUNet.data.prjoti.Prjoti_VUNet_train
+  validation: VUNet.data.prjoti.Prjoti_VUNet_val
