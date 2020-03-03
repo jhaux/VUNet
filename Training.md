@@ -52,14 +52,14 @@ split of the data (found in the config at `datasets/validation`) without
 updating the model. Logging is done as requested in the dynamically created
 `log_op` function.
 
-At the end of each epoch the model is applied to the whole, sorted validation
+At the end of each epoch the model is applied to the whole sorted validation
 split and all outputs of the `eval_op` function are written out in such a
 manner, that they can be easily loaded again later for further evaluation.
 
 The `train_op` is called at every step, if `edflow` was invoked with the `-t`
 parameter. The `log_op` is only called every few steps. Finally the `eval_op`
 is only called at the end of each epoch. Take a look at the documentation of
-`edflow.eval.pipeline` For more information on how to do that.
+`edflow.eval.pipeline` for more information.
 
 
 ### A closer look at the `step_op`
@@ -106,7 +106,7 @@ do so right away.
 ```
 
 After that we prepare the inputs to be `pytorch` tensors and set the model to
-train model, depending on the state of the training. Remember: E.g. during
+train mode, depending on the state of the training. Remember: E.g. during
 logging the state will change to eval model, when iterating over the validation
 set.
 

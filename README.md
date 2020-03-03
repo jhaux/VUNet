@@ -5,10 +5,9 @@ apperance. It learns to use an estimate of pose to then disentangle appearance.
 
 ![Vunet combines pose and apperance to a new and possibly unseen image.](resources/vunet.png)
 
-VUNet has been published by Patrick Esser: [paper][1] | [project page][2]
-
-Another follow up paper shows the capabilities of VUNet as a render engine:
-[paper][3] | [project page][4]
+VUNet has been published by Esser et al.  <span id="a1">[[1]](#f1)</span>.
+A follow up paper by Esser et al. <span id="a1">[[2]](#f2)</span> shows the
+capabilities of VUNet as a render engine.
 
 This repository gives you VUNet implemented using `pytorch` and all training
 code in an hopefully easy to use form.
@@ -39,8 +38,6 @@ pip install -e .
 
 Now you are good to go!
 
-You can also run `install.sh`, which does all of the above.
-
 
 ## Quick start
 
@@ -55,7 +52,7 @@ ln -s <your/path/here> logs
 edflow -n test_vunet -b base.yaml prjoti.yaml -t
 ```
 Replace `<your/path/here>` with a directory, you want to log the training
-outputs to. You can also leave this out
+outputs to. You can also leave this out.
 
 The first time you run this command it will download a small debug training
 dataset. To learn more about this dataset and what kind of data VUNet expects,
@@ -122,11 +119,32 @@ The structure of this repo follows the `edflow` project structure:
 # edflow
 
 To learn more about `edflow` and how to use it to do evaluations, trainings or
-parameter sweeps, visit the [homepage](github.com/pesser/edflow) if the project
+parameter sweeps, visit the [homepage](github.com/pesser/edflow) of the project
 or take a look at the [documentation](edflow.readthedocs.io).
 
 
-[1]: https://compvis.github.io/vunet/images/vunet.pdf
-[2]: https://compvis.github.io/vunet/
-[3]: https://compvis.github.io/hbugen2018/images/rerender.pdf
-[4]: https://compvis.github.io/hbugen2018/
+# References
+
+<span id="f1">\[1\]</span>:  [paper][v1] | [project page][v2]
+```
+@article{vunet2018,
+  title={A Variational U-Net for Conditional Appearance and Shape Generation},
+  author={Esser, Patrick and Sutter, Ekaterina and Ommer, Bj{\"o}rn},
+  year={2018}
+}
+```
+
+<span id="f2">\[2\]</span>: [paper][r1] | [project page][r2]
+```
+@article{rerender2018,
+  title={Towards Learning a Realistic Rendering of Human Behavior},
+  author={Esser, Patrick and Haux, Johannes and Milbich, Timo and Ommer, Bj{\"o}rn},
+  year={2018}
+}
+```
+
+
+[v1]: https://compvis.github.io/vunet/images/vunet.pdf
+[v2]: https://compvis.github.io/vunet/
+[r1]: https://compvis.github.io/hbugen2018/images/rerender.pdf
+[r2]: https://compvis.github.io/hbugen2018/

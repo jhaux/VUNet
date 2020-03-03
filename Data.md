@@ -1,6 +1,6 @@
 # Data
 
-As a person image generator VUNet needs two inputs, one that defines what the
+As a person image generator VUNet needs two inputs, one that defines the
 pose of the displayed person, one that defines its appearance.
 Additionally for training we need to know what this combination of pose and
 appearance looks like to be able to define a reconstruction loss.
